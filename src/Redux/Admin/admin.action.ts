@@ -1,4 +1,6 @@
 // import { async } from "@firebase/util";
+
+import { Product } from "../../utils/types";
 import { AppDispatch } from "../store";
 import {
   adminDataAPI,
@@ -21,10 +23,10 @@ export interface IAdmin{
   password: string
 }
 
-export const getAdminData = () => async (dispatch:AppDispatch) => {
+export const getAdminData = ():any => async (dispatch:AppDispatch) => {
   dispatch({
     type: ADMIN_DATA_LOADING,
-    payload: undefined
+    payload: ""
   });
 
   try {
@@ -35,15 +37,15 @@ export const getAdminData = () => async (dispatch:AppDispatch) => {
   } catch (err) {
     dispatch({
       type: ADMIN_DATA_ERROR,
-      payload: undefined
+      payload: ""
     });
   }
 };
 
-export const postAdminData = (payload:IAdmin) => async (dispatch:AppDispatch) => {
+export const postAdminData = (payload:Product):any => async (dispatch:AppDispatch) => {
   dispatch({
     type: POST_ADMIN_DATA_LOADING,
-    payload: undefined
+    payload: ""
   });
   try {
     let data = await postAdminDataAPi(payload);
@@ -53,26 +55,26 @@ export const postAdminData = (payload:IAdmin) => async (dispatch:AppDispatch) =>
   } catch (err) {
     dispatch({
       type: ADMIN_DATA_ERROR,
-      payload: undefined
+      payload: ""
     });
   }
 };
 
-export const deleteData = (id:number) => async (dispatch:AppDispatch) => {
+export const deleteData = (id:number):any => async (dispatch:AppDispatch) => {
   try {
     let data = await deleteAdminAPi(id);
     dispatch({
       type: ADMIN_DATA_LOADING,
-      payload: undefined
+      payload: ""
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const FilterData = (payload:string) => async (dispatch:AppDispatch) => {
+export const FilterData = (load:string):any => async (dispatch:AppDispatch) => {
   try {
-    let data = await categoryAdmin(payload);
+    let data = await categoryAdmin(load);
     dispatch({ type: FILTERING_ADMIN_DATA, payload: data });
   } catch (err) {
     console.log(err);

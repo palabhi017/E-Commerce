@@ -9,7 +9,7 @@ export interface IAppState{
   currPage:number,
   totalPrice: number
 }
-export type AppAction= string | number | Product[] 
+export type AppAction= string | number | Product[] |any
 export type AppType= string 
 export interface Temp {
   type: AppType,

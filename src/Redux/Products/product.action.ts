@@ -7,10 +7,10 @@ export const protypes = (payload:string) => {
   return { type: types.PRODUCTS_TYPE, payload: payload };
 };
 
-export const getProducts = (getProductsParam:Category) => async (dispatch:AppDispatch) => {
+export const getProducts = (getProductsParam:Category):any => async (dispatch:AppDispatch) => {
   dispatch({
     type: types.PRODUCTS_LOAD,
-    payload: undefined
+    payload: ""
   });
   try {
     let data = await getProdata(getProductsParam);
@@ -20,7 +20,7 @@ export const getProducts = (getProductsParam:Category) => async (dispatch:AppDis
   } catch (error) {
     dispatch({
       type: types.PRODUCTS_ERROR,
-      payload: undefined
+      payload: ""
     });
   }
 };

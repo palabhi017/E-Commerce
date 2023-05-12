@@ -4,11 +4,11 @@ import { getAuth } from "./auth.api"
 import * as types from "./auth.types"
 
 
-export const postUserData = (UserData:User) => async(dispatch:AppDispatch)=>{
+export const postUserData = (UserData:User):any => async(dispatch:AppDispatch)=>{
 
 dispatch({
     type: types.AUTH_LOAD,
-    payload: undefined
+    payload: ""
 })
 try {
     let data = await getAuth(UserData)
@@ -19,7 +19,7 @@ try {
 } catch (error) {
     dispatch({
         type: types.AUTH_ERROR,
-        payload: undefined
+        payload: ""
     })
 }
 }

@@ -3,13 +3,14 @@ import { Temp } from "../Products/product.reducer";
 import * as types from "./auth.types";
 
 export interface IAuthState {
-    currentUser: User| null,
+    currentUser?: User | null,
     isLoading:boolean,
     isAuth: boolean,
     users:User[],
     isError:boolean
 }
 const init:IAuthState={
+    // @ts-ignore
     currentUser: JSON.parse(localStorage.getItem("user"))||{},
     
     isLoading:false,
