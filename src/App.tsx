@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
+import Footer from "./Components/Footer/Footer"
 import AllRoutes from './Pages/AllRoutes';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
     <div className="App">
         <Navbar/>
         <AllRoutes/>
-        <Navbar/>
+        <Footer/>
     </div>
   );
 }

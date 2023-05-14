@@ -36,13 +36,7 @@ interface Props{
   href?:string
 }
 
-const ListHeader = ({ children }:Props) => {
-  return (
-    <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
-      {children}
-    </Text>
-  );
-};
+
 
 const SocialButton = ({ children, label, href }:Props) => {
   return (
@@ -452,22 +446,22 @@ export default function Footer() {
               <h3>Online Shopping</h3>
               <h4>Home & Living</h4>
               <div className={styles.links}>
-                <a href="#">Cutains and Sheers</a> |{" "}
-                <a href="#"> Round Cushions</a> | <a href="#">Sofa Covers</a> |{" "}
-                <a href="#">Cotton Bedsheets</a> | <a href="#">Bedding Sets</a>{" "}
-                | <a href="#">Pillow Covers</a> |
-                <a href="#">Decorative Items</a> | <a href="#">Duvet Covers</a>{" "}
-                | <a href="#">Blankets</a> | <a href="#">Furniture</a> |{" "}
-                <a href="#">Carpets</a>
+                <span>Cutains and Sheers</span> |{" "}
+                <span> Round Cushions</span> | <span>Sofa Covers</span> |{" "}
+                <span>Cotton Bedsheets</span> | <span>Bedding Sets</span>{" "}
+                | <span>Pillow Covers</span> |
+                <span>Decorative Items</span> | <span>Duvet Covers</span>{" "}
+                | <span>Blankets</span> | <span>Furniture</span> |{" "}
+                <span>Carpets</span>
               </div>
             </div>
             <div className={styles.linkSection}>
               <h4>Men Ethnicwear</h4>
               <div className={styles.links}>
-                <a href="#">Men Dhoti Kurtas</a> |{" "}
-                <a href="#"> Men Indo Western Dresses</a> |{" "}
-                <a href="#">Men Velvet Sherwanis </a> |{" "}
-                <a href="#">Cotton Bedsheets</a> | <a href="#"> Men Dhotis</a>
+                <span>Men Dhoti Kurtas</span> |{" "}
+                <span> Men Indo Western Dresses</span> |{" "}
+                <span>Men Velvet Sherwanis </span> |{" "}
+                <span>Cotton Bedsheets</span> | <span> Men Dhotis</span>
               </div>
             </div>
 
@@ -476,79 +470,79 @@ export default function Footer() {
 
               <h4>Women Western Wear</h4>
               <div className={styles.links}>
-                <a href="#">Women Frocks</a> | <a href="#"> Long Tops Women</a>{" "}
-                | <a href="#"> Tshirt Dresses</a> |{" "}
-                <a href="#">Designer Gown</a> | <a href="#">Pencil Skirts</a> |{" "}
-                <a href="#">Women Trousers</a> |<a href="#">Flared Jeans</a> |{" "}
-                <a href="#">Women Sweatshirts</a> | <a href="#">Shrugs </a> |{" "}
-                <a href="#">Jacket Dresses</a> |{" "}
-                <a href="#">Fancy Ladies Sweater</a> |{" "}
-                <a href="#">Chikankari Palazzos</a> |{" "}
-                <a href="#"> Ankle Length Leggings </a> |{" "}
-                <a href="#"> Tights</a> | <a href="#">Printed Leggings</a> |{" "}
-                <a href="#">Short Night Dress </a> |{" "}
-                <a href="#">Maternity Wear</a> |
-                <a href="#">Denim Women Shorts</a> |{" "}
-                <a href="#">Black Jeggings</a> |{" "}
-                <a href="#">Women Night Suits </a> |{" "}
-                <a href="#">Lace Lingerie Sets</a> |{" "}
-                <a href="#">Lingerie Sets</a>
+                <span>Women Frocks</span> | <span> Long Tops Women</span>{" "}
+                | <span> Tshirt Dresses</span> |{" "}
+                <span>Designer Gown</span> | <span>Pencil Skirts</span> |{" "}
+                <span>Women Trousers</span> |<span>Flared Jeans</span> |{" "}
+                <span>Women Sweatshirts</span> | <span>Shrugs </span> |{" "}
+                <span>Jacket Dresses</span> |{" "}
+                <span>Fancy Ladies Sweater</span> |{" "}
+                <span>Chikankari Palazzos</span> |{" "}
+                <span> Ankle Length Leggings </span> |{" "}
+                <span> Tights</span> | <span>Printed Leggings</span> |{" "}
+                <span>Short Night Dress </span> |{" "}
+                <span>Maternity Wear</span> |
+                <span>Denim Women Shorts</span> |{" "}
+                <span>Black Jeggings</span> |{" "}
+                <span>Women Night Suits </span> |{" "}
+                <span>Lace Lingerie Sets</span> |{" "}
+                <span>Lingerie Sets</span>
               </div>
             </div>
 
             <div className={styles.linkSection}>
               <h4>Women Footwear</h4>
               <div className={styles.links}>
-                <a href="#">Women Slippers</a> | <a href="#"> Bellies</a> |{" "}
-                <a href="#"> Juttis</a> | <a href="#">Mojaris</a> |{" "}
-                <a href="#">Sandals</a> |
+                <span>Women Slippers</span> | <span> Bellies</span> |{" "}
+                <span> Juttis</span> | <span>Mojaris</span> |{" "}
+                <span>Sandals</span> |
               </div>
             </div>
 
             <div className={styles.linkSection}>
               <h4>Baby</h4>
               <div className={styles.links}>
-                <a href="#">Baby Pillows</a> | <a href="#"> Baby Towels</a> |{" "}
-                <a href="#">Baby Hanging Cradle</a> |{" "}
-                <a href="#">Baby Sleeping Bag</a> | <a href="#">Baby Blanket</a>
+                <span>Baby Pillows</span> | <span> Baby Towels</span> |{" "}
+                <span>Baby Hanging Cradle</span> |{" "}
+                <span>Baby Sleeping Bag</span> | <span>Baby Blanket</span>
               </div>
             </div>
 
             <div className={styles.linkSection}>
               <h4>Home & Kitchen</h4>
               <div className={styles.links}>
-                <a href="#">Toaster</a> | <a href="#"> Mixer Grinder</a> |{" "}
-                <a href="#">Cookers</a> | <a href="#">Juicer</a> |{" "}
-                <a href="#">Food Processors</a> | <a href="#">Roti Maker</a> |{" "}
-                <a href="#">Sandwich Maker</a> | <a href="#">Kettles</a> |{" "}
-                <a href="#">Hand Blender </a> | <a href="#">Table Cover</a> |{" "}
-                <a href="#">Napkins Holder</a> | <a href="#">Kitchen Mat</a> |{" "}
-                <a href="#"> Kitchen Towel</a> | <a href="#">Aprons</a> |{" "}
-                <a href="#"> Kitchen Gloves</a> |{" "}
-                <a href="#">Racks & Holders</a> | <a href="#">Spice Racks</a> |{" "}
-                <a href="#">Thermos & Flasks </a> | <a href="#">Lunch Boxes </a>{" "}
-                | <a href="#">Water Bottles</a> |{" "}
-                <a href="#">Jars & Container</a> |{" "}
-                <a href="#">Salt & Pepper Shakers</a> | <a href="#">Knives</a> |{" "}
-                <a href="#">Food Strainers</a> | <a href="#">Choppers</a> |{" "}
-                <a href="#"> Mashers</a> | <a href="#">Graters </a> |{" "}
-                <a href="#">Cutlery</a>
+                <span>Toaster</span> | <span> Mixer Grinder</span> |{" "}
+                <span>Cookers</span> | <span>Juicer</span> |{" "}
+                <span>Food Processors</span> | <span>Roti Maker</span> |{" "}
+                <span>Sandwich Maker</span> | <span>Kettles</span> |{" "}
+                <span>Hand Blender </span> | <span>Table Cover</span> |{" "}
+                <span>Napkins Holder</span> | <span>Kitchen Mat</span> |{" "}
+                <span> Kitchen Towel</span> | <span>Aprons</span> |{" "}
+                <span> Kitchen Gloves</span> |{" "}
+                <span>Racks & Holders</span> | <span>Spice Racks</span> |{" "}
+                <span>Thermos & Flasks </span> | <span>Lunch Boxes </span>{" "}
+                | <span>Water Bottles</span> |{" "}
+                <span>Jars & Container</span> |{" "}
+                <span>Salt & Pepper Shakers</span> | <span>Knives</span> |{" "}
+                <span>Food Strainers</span> | <span>Choppers</span> |{" "}
+                <span> Mashers</span> | <span>Graters </span> |{" "}
+                <span>Cutlery</span>
               </div>
             </div>
 
             <div className={styles.linkSection}>
               <h4>Personal Care & Wellness</h4>
               <div className={styles.links}>
-                <a href="#">Tummy trimmer</a> | <a href="#">Makeup Kits</a> |{" "}
-                <a href="#"> Hair Care </a> | <a href="#">Hair Color</a> |{" "}
-                <a href="#">Hair Steamers</a> | <a href="#">Oral Care </a> |{" "}
-                <a href="#">Beard Oil</a> | <a href="#">Deodorants</a> |{" "}
-                <a href="#">Eye Lenses</a> | <a href="#">Soap</a> |{" "}
-                <a href="#">Oximeter </a> | <a href="#"> Bb Cream </a> |{" "}
-                <a href="#">Body Scrub</a> | <a href="#"> Olive Oils </a> |{" "}
-                <a href="#">Talcum Powder </a> | <a href="#"> Face Steamers </a>{" "}
-                | <a href="#">Compact </a> | <a href="#">Nail Cutter</a> |{" "}
-                <a href="#">Lip Balm </a>
+                <span>Tummy trimmer</span> | <span>Makeup Kits</span> |{" "}
+                <span> Hair Care </span> | <span>Hair Color</span> |{" "}
+                <span>Hair Steamers</span> | <span>Oral Care </span> |{" "}
+                <span>Beard Oil</span> | <span>Deodorants</span> |{" "}
+                <span>Eye Lenses</span> | <span>Soap</span> |{" "}
+                <span>Oximeter </span> | <span> Bb Cream </span> |{" "}
+                <span>Body Scrub</span> | <span> Olive Oils </span> |{" "}
+                <span>Talcum Powder </span> | <span> Face Steamers </span>{" "}
+                | <span>Compact </span> | <span>Nail Cutter</span> |{" "}
+                <span>Lip Balm </span>
               </div>
             </div>
           </div>
