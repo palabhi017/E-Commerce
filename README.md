@@ -10,6 +10,8 @@
  - render
  - Vercel
  - Chakra UI
+ - Formik
+ - Yup
  
  
  # Deployed Link
@@ -18,8 +20,11 @@
  
  # Features :
  ### UserSide
-- Email and Password Validation in the Signup and login form.
+- User Specific.
+- Email and Password Validation and authentication in the Signup and login form.
 - Product catalog: A product catalog is a comprehensive list of all the products or services that the e-commerce website offers. It should include product descriptions, images, prices, and any relevant specifications to help customers make informed decisions.
+
+- Filteration, sorting and pagination on product page.
 
 - Shopping cart: A shopping cart is an essential feature of any e-commerce website, allowing customers to add items to their virtual cart before proceeding to the checkout process. The shopping cart should be easy to use, and customers should be able to see the total cost of their purchases at any time.
 
