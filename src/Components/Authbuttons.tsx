@@ -8,13 +8,14 @@ import {
   
   Flex,
   Button,
+  Menu,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
 const Authbuttons = () => {
   return (
-    <>
-      
+    
+      <Menu>
       <MenuButton >
        
       
@@ -43,7 +44,8 @@ const Authbuttons = () => {
           </VStack>
         </MenuGroup>
       </MenuList>
-    </>
+      </Menu>
+    
   );
 };
 

@@ -5,7 +5,7 @@ import { ArrowRightIcon, StarIcon } from "@chakra-ui/icons";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { AUTH_SUCCESS } from "../Redux/Auth/auth.types";
 import {
   HStack,
