@@ -76,11 +76,6 @@ const Productpage = () => {
               <Box  ref={btnRef} color='teal' onClick={onOpen} w="50%" fontSize="20px" fontWeight={"500"}>Filter</Box>
             </HStack>
            
- 
-  
-      {/* <Button ref={btnRef} color='teal' onClick={onOpen}>
-        Open
-      </Button> */}
       <Drawer
         isOpen={isOpen}
         placement='right'

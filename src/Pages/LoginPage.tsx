@@ -18,7 +18,7 @@ import {
   HStack,
   Highlight,
 } from "@chakra-ui/react";
-import "../CSS/LoginCss.css";
+// import "../CSS/LoginCss.css";
 import { useFormik } from 'formik'
 import { AUTH_SUCCESS, SET_CUR_NAME } from "../Redux/Auth/auth.types";
 import { useNavigate } from "react-router-dom";

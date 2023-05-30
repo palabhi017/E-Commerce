@@ -1,6 +1,6 @@
 import React from "react";
 import AdminNavbar from "./AdminNavbar";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   deleteData,
   FilterData,
@@ -9,18 +9,12 @@ import {
 
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
-  Card,
-  CardBody,
-  CardFooter,
-  Image,
+ 
   Divider,
-  Text,
-  Heading,
   Button,
   Flex,
   Box,
   ButtonGroup,
-  Stack,
   Menu,
   MenuButton,
   MenuList,
@@ -28,15 +22,20 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-import "../../CSS/AdminLoginPage.css";
+// import "../../CSS/AdminLoginPage.css";
 import { Product } from "../../utils/types";
 import { useAppSelector } from "../../Redux/store";
+import { PRODUCTS_PAGE } from "../../Redux/Products/product.type";
+import Procard from "./Procard";
 
 const AdminDash = () => {
   const [total, setTotal] = React.useState<number>(0);
   const Toast = useToast();
   const state = useAppSelector((store) => store.adminReducer);
   const val = state.data.data;
+  const load = useAppSelector((state) => state.productReducer.isLoading);
+  const activePage = useAppSelector((state) => state.productReducer.currPage);
+  const totalPages = Math.ceil(val?.length/10)
   
   const dispatch = useDispatch();
   
@@ -81,6 +80,8 @@ const AdminDash = () => {
 
   React.useEffect(() => {
     dispatch(getAdminData());
+    dispatch({type:PRODUCTS_PAGE,payload:1})
+
     ToTalData();
   }, []);
   
@@ -107,7 +108,7 @@ const AdminDash = () => {
           <ButtonGroup>
             <Button
               backgroundColor="rgb(244, 51, 151)"
-              fontFamily={" 'Lobster Two', cursive"}
+             
             >
               Total Products :
               {state.data.data && state.data.data.length
@@ -124,41 +125,41 @@ const AdminDash = () => {
                 _hover={{ bg: "rgb(153, 153, 153).400" }}
                 _expanded={{ bg: "rgb(153, 153, 153).400" }}
                 _focus={{ boxShadow: "outline" }}
-                fontFamily={" 'Lobster Two', cursive"}
+               
               >
                 Category <ChevronDownIcon />
               </MenuButton>
               <MenuList>
                 <MenuItem
-                  fontFamily={" 'Lobster Two', cursive"}
+                 
                   onClick={() => handleSelectData("men")}
                 >
                   Men
                 </MenuItem>
                 <MenuItem
-                  fontFamily={" 'Lobster Two', cursive"}
+                 
                   onClick={() => handleSelectData("women")}
                 >
                   Women
                 </MenuItem>
                 <MenuDivider />
                 <MenuItem
-                  fontFamily={" 'Lobster Two', cursive"}
+                 
                   onClick={() => handleSelectData("Beauty & Health")}
                 >
                   {" "}
                   Cosmatics
                 </MenuItem>
-                <MenuItem fontFamily={" 'Lobster Two', cursive"}>
+                <MenuItem>
                   Jewellery and Accessories
                 </MenuItem>
-                <MenuItem fontFamily={" 'Lobster Two', cursive"}>
+                <MenuItem>
                   FootWear
                 </MenuItem>
               </MenuList>
             </Menu>
             <Button
-              fontFamily={" 'Lobster Two', cursive"}
+             
               backgroundColor="rgb(244, 51, 151)"
             >
               Total Inventory : ₹{total}
@@ -184,125 +185,18 @@ const AdminDash = () => {
         }}
       >
         {state.data.data &&
-          state.data.data.reverse().map((el:Product) => {
-            return (
-              <Card maxW="sm" key={el.id} h="420px">
-                <CardBody h="300px" >
-                  <Box>
-                    <Box  className="BeforeHover">
-                      <Image
-                        h="100px"
-                        // w="10"
-                        src={el.image}
-                        alt={el.title}
-                        margin="auto"
-                        className="BeforeHover"
-                      />
-                    </Box>
-                   
-                    <Stack mt="6" spacing="3">
-                    <Text fontFamily={" 'Lobster Two', cursive"}>
-                      {el.category}
-                    </Text>
-                    <Text
-                      // fontSize={"xl"}
-                      style={{
-                        color: " rgb(153, 153, 153)",
-                        fontSize:"14px",
-                        fontWeight: "400",
-                        
-                      }}
-                      fontFamily={" 'Lobster Two', cursive"}
-                      noOfLines={1}
-                    >
-                      {el.title}
-                    </Text>
-                    <Text
-                      style={{ fontWeight: "700" }}
-                      color="rgb(51, 51, 51)"
-                      // fontSize="2xl"
-                    >
-                      <span >Price ₹</span>{" "}
-                      {el.price}
-                    </Text>
-
-                    <Text
-                      
-                      color="blue.600"
-                      // fontSize="2xl"
-                    >
-                      <span
-                        
-                        style={{ fontWeight: "700" }}
-                      >
-                        Tag
-                      </span>{" "}
-                      {el.tag}
-                    </Text>
-                    <Flex
-                      style={{ gap: "20px", justifyContent: "space-evenly" }}
-                    >
-                      <Text
-                        fontFamily={" 'Lobster Two', cursive"}
-                        color="blue.600"
-                        // fontSize="16px"
-                      >
-                        {el.reviews}
-                      </Text>
-
-                      <Button
-                        style={{ border: "18px 12px" }}
-                        bg={"rgb(244, 51, 151)"}
-                        className="btn_Hover"
-                        fontFamily={" 'Lobster Two', cursive"}
-                      >
-                        <Text
-                          fontFamily={" 'Lobster Two', cursive"}
-                          color="#ffff"
-                          fontSize="14px"
-                          p="0"
-                        >
-                          {el.rating}
-                        </Text>
-                      </Button>
-                    </Flex>
-                  </Stack>
-                  </Box>
-                  {/* <br/>
-                  <br/> */}
-                  
-                </CardBody>
-                <Divider />
-                <CardFooter >
-                  <ButtonGroup gap="20px" >
-                    <Button
-                      variant="solid"
-                      bg={"rgb(244, 51, 151)"}
-                      color={"#ffff"}
-                      className="btn_Hover"
-                      // onClick={() => handleDelete(el.id)}
-                      fontFamily={" 'Lobster Two', cursive"}
-                      fontSize="14px"
-                    >
-                      Delete
-                    </Button>{" "}
-                    <Button
-                      variant="solid"
-                      bg={"rgb(244, 51, 151)"}
-                      color={"#ffff"}
-                      className="btn_Hover"
-                      // onClick={() => handleUpdate(el.id, el.price, el.title)}
-                      fontFamily={" 'Lobster Two', cursive"}
-                      fontSize="14px"
-                    >
-                      Update
-                    </Button>
-                  </ButtonGroup>
-                </CardFooter>
-              </Card>
-            );
-          })}
+          state.data.data.reverse().filter((_: any,index: number)=> {return (
+            index >= 10* (activePage-1) && 
+            index < 10 * activePage
+          )}).map((el:Product) => <Procard {...el}/>)}
       </Box>
+      {!load? <Flex w="80px" m="auto"  mt="30px" gap="3px" mb="10px">
+        <Button isDisabled={activePage===1} bgColor={"teal.500"} color="white" fontSize={"20px"} fontWeight={"bold"} onClick={()=> dispatch({type:PRODUCTS_PAGE,payload:activePage-1})}>
+          {"<"}
+        </Button>
+        <Button color="teal.500">{activePage}</Button>
+        <Button isDisabled={activePage===totalPages} bgColor={"teal.500"} color="white" fontSize={"20px"} fontWeight={"bold"} onClick={()=> dispatch({type:PRODUCTS_PAGE,payload:activePage+1})}>{">"}</Button>
+      </Flex> :""}
     </div>
   );
 };

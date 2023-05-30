@@ -15,7 +15,7 @@ function App() {
       <div className="small">
         <SmallNavbar />
       </div>
-      {/* <GoOnTop /> */}
+      
       <AllRoutes />
       <Footer />
     </div>

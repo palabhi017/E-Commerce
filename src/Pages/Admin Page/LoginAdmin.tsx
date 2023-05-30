@@ -17,7 +17,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useToast } from "@chakra-ui/react";
-import "../../CSS/AdminLoginPage.css";
+// import "../../CSS/AdminLoginPage.css";
 const initialState = {
   email: "",
   password: "",
@@ -40,41 +40,31 @@ export default function LoginAdmin() {
 
 
   const handleSubmit = async () => {
-    // setText(false);
-    if (val.password === "citySlicka") {
-      try {
-         await axios.post("https://reqres.in/api/login", val);
+   
+    if (val.password === "abhishek" && val.email==="abhi@123.com") {
+      navigate("/AdminDashboard");
+    
 
-        // setText(true);
-        navigate("/AdminDashboard");
+      
         handleToast({
           position: "top-right",
           title: "Hello Admin Welcome back",
           description: "Now You can do your work.",
           status: "success",
-          duration: 9000,
+          duration: 3000,
           isClosable: true,
         });
-      } catch (err) {
-        console.log(err);
-        // setText(false);
-        // setText(false);
-        handleToast({
-          position: "top-right",
-          description: "Please Check your id and password",
-          title: "Wrong Credential",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
+    
+       
+        
+      
     } else {
       handleToast({
         position: "top-right",
-        description: "Please Check your password",
+        description: "Please Check your id and password",
         title: "Wrong Credential",
         status: "success",
-        duration: 9000,
+        duration: 3000,
         isClosable: true,
       });
     }
@@ -145,7 +135,7 @@ export default function LoginAdmin() {
                   type="email"
                   onChange={handleChange}
                   name="email"
-                  value={val.name}
+                  value={val.email}
                 />
               </FormControl>
               <FormControl id="password">

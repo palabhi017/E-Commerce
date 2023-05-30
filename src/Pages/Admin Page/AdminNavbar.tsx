@@ -87,7 +87,7 @@ const AdminNavbar = () => {
                       fontSize={{ base: "9px", sm: "18px" }}
                       width="100%"
                       onClick={() => navigate("/AdminDashboard")}
-                      fontFamily={" 'Lobster Two', cursive"}
+                     
                     >
                       ADMIN DASHBOARD
                     </Button>
@@ -95,7 +95,7 @@ const AdminNavbar = () => {
                       fontSize={{ base: "9px", sm: "18px" }}
                       width="100%"
                       onClick={() => navigate("/Adminadd")}
-                      fontFamily={" 'Lobster Two', cursive"}
+                     
                     >
                       ADMIN ADD PRODUCT
                     </Button>
@@ -103,7 +103,7 @@ const AdminNavbar = () => {
                       fontSize={{ base: "9px", sm: "18px" }}
                       width="100%"
                       onClick={() => navigate("/AdminDataAnalytics")}
-                      fontFamily={" 'Lobster Two', cursive"}
+                     
                     >
                       ADMIN DATA ANALYTICS
                     </Button>
@@ -111,7 +111,7 @@ const AdminNavbar = () => {
                       fontSize={{ base: "9px", sm: "18px" }}
                       width="100%"
                       onClick={() => navigate("/")}
-                      fontFamily={" 'Lobster Two', cursive"}
+                     
                     >
                       USER SIDE
                     </Button>

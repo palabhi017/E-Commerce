@@ -12,7 +12,7 @@ import {
 import { useToast } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { postAdminData } from "../../Redux/Admin/admin.action";
-import "../../CSS/AdminLoginPage.css";
+// import "../../CSS/AdminLoginPage.css";
 import { useNavigate } from "react-router";
 import { Product } from "../../utils/types";
 const initialState = {

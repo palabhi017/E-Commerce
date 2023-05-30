@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ChevronUpIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import "../../CSS/ButtonFile.css";
+// import "../../CSS/ButtonFile.css";
 
 
 
@@ -69,6 +69,7 @@ export default function Footer() {
       <Box
         className="Footer_part"
         color={useColorModeValue("gray.700", "gray.200")}
+        bgColor={"#f7f7f7"}
       >
         <Container as={Stack} maxW={"7xl"} py={10}>
           <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
