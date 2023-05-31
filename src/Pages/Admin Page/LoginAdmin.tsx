@@ -11,21 +11,22 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  HStack,
 } from "@chakra-ui/react";
 import React from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useToast } from "@chakra-ui/react";
-// import "../../CSS/AdminLoginPage.css";
+import adminback from "../../Images/adminback.jpg";
 const initialState = {
   email: "",
   password: "",
 };
-interface Log{
-  email:string,
-  password:string,
-  name?:string
+interface Log {
+  email: string;
+  password: string;
+  name?: string;
 }
 export default function LoginAdmin() {
   const [val, setVal] = React.useState<Log>(initialState);
@@ -33,31 +34,23 @@ export default function LoginAdmin() {
   const navigate = useNavigate();
   const handleToast = useToast();
 
-  const handleChange:React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
     setVal({ ...val, [name]: value });
   };
 
-
   const handleSubmit = async () => {
-   
-    if (val.password === "abhishek" && val.email==="abhi@123.com") {
+    if (val.password === "abhishek" && val.email === "abhi@123.com") {
       navigate("/AdminDashboard");
-    
 
-      
-        handleToast({
-          position: "top-right",
-          title: "Hello Admin Welcome back",
-          description: "Now You can do your work.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-    
-       
-        
-      
+      handleToast({
+        position: "top-right",
+        title: "Hello Admin Welcome back",
+        description: "Now You can do your work.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } else {
       handleToast({
         position: "top-right",
@@ -71,60 +64,30 @@ export default function LoginAdmin() {
     setVal(initialState);
   };
 
-  // if (text === true) {
-  //   console.log("helllo");
-  //   navigate("/AdminDashboard");
-  // }
-
   return (
-    <Box className="AdminLoginPageCSS">
-      <Heading
-        color={"gray.800"}
-        lineHeight={1.1}
-        fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-        fontFamily={" 'Lobster Two', cursive"}
-      >
-        Welcome Admin
-        <br></br>
-        Please Add Your Crenditial
-        <Text as={"span"} bgClip="text">
-          !
-        </Text>
-      </Heading>
-      <Flex
-        minH={"100vh"}
-        align={"center"}
-        justify={"center"}
-        // bg={useColorModeValue("gray.50", "gray.800")}
-        className="AdminLoginPageCSS"
-      >
-        <Stack
-          spacing={8}
-          mx={"auto"}
-          maxW={"lg"}
-          py={12}
-          px={6}
-          className="LoginAdminBAHAR"
+    <HStack backgroundImage={adminback} h="80vh">
+      <Box w="50vw">
+        <Heading
+          color={"white"}
+          lineHeight={1.1}
+          fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+          fontFamily={" 'Lobster Two', cursive"}
         >
-          <Stack align={"center"}>
-            <Heading fontSize={"4xl"} fontFamily={" 'Lobster Two', cursive"}>
-              Sign in to your account
-            </Heading>
-            <Text
-              fontSize={"lg"}
-              color={"gray.600"}
-              fontFamily={" 'Lobster Two', cursive"}
-            >
-              to enjoy all of our cool <Link color={"blue.400"}>features</Link>{" "}
-              ✌️
-            </Text>
-          </Stack>
+          Welcome Admin <br />
+          Sign in to your account
+          <Text as={"span"} bgClip="text">
+            !
+          </Text>
+        </Heading>
+      </Box>
+
+      <Flex w="50vw" align={"center"} justify={"center"}>
+        <Stack w="60%" py={12}>
           <Box
             rounded={"lg"}
             bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
             p={8}
-            className="AdminLoginPageCSS"
           >
             <Stack spacing={4} borderRadius={"20px"}>
               <FormControl id="email">
@@ -183,6 +146,6 @@ export default function LoginAdmin() {
         </Stack>
       </Flex>
       <ToastContainer />
-    </Box>
+    </HStack>
   );
 }

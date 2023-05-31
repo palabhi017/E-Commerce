@@ -13,7 +13,7 @@ import AdminDash from "./Admin Page/AdminDash";
 import AdminUpdate from "./Admin Page/AdminUpdate";
 import PrivateRoute from "./PrivateRoute";
 import Orders from "./Orders";
-import AdminDataAnalytics from "./Admin Page/AdminDataAnalytics";
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -50,7 +50,7 @@ const AllRoutes = () => {
       <Route path="/AdminAdd" element={<AdminAdd />} />
       <Route path="/AdminDashboard" element={<AdminDash />} />
       <Route path="/AdminUpdate" element={<AdminUpdate />} />
-      <Route path="/AdminDataAnalytics" element={<AdminDataAnalytics />} />
+  
     </Routes>
   );
 };
