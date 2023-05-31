@@ -1,7 +1,12 @@
 import { Box, Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Flex, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import {Product} from "../../utils/types"
-const Procard = ({id,title,image,category,price,rating,reviews,tag}:Product) => {
+interface Prop{
+  obj:Product,
+  hanDel:(e:any)=>void
+}
+const Procard = ({obj,hanDel}:Prop) => {
+  const {id,title,image,category,price,rating,reviews,tag} = obj
   return (
     <Card maxW="sm" key={id} h="420px">
     <CardBody h="300px" >
@@ -100,7 +105,7 @@ const Procard = ({id,title,image,category,price,rating,reviews,tag}:Product) => 
           bg={"rgb(244, 51, 151)"}
           color={"#ffff"}
           className="btn_Hover"
-          // onClick={() => handleDelete(id)}
+          onClick={() => hanDel(id)}
          
           fontSize="14px"
         >

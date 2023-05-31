@@ -25,8 +25,8 @@ const AdminNavbar = () => {
   let navigate = useNavigate();
   return (
     <div>
-      <Box bg="rgb(244, 51, 151);" p={4}>
-        <HStack gap={10} alignItems="center">
+      <Box bg="pink.300" p={4}>
+        <HStack  alignItems="center">
           <Box>
             <Button
               
@@ -53,14 +53,14 @@ const AdminNavbar = () => {
                     gap={"20px"}
                     justifyContent="space-evenly"
                     alignItems="center"
-                    margin="20px"
+                  
                   >
                     <Image
                       src={
                         "https://user-images.githubusercontent.com/106021674/221098510-39b1e89c-8564-4db9-831d-d285e1b6222c.png"
                       }
                       alt=""
-                      width={{ base: "20%", sm: "25%", mg: "35%", lg: "20%" }}
+                      width={{ base: "20%", sm: "25%", md: "35%", lg: "50%" }}
                       height={{ base: "55px", sm: "60px", lg: "100px" }}
                       borderRadius="50%"
                     />

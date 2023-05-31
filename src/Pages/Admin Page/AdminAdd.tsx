@@ -40,7 +40,7 @@ const AdminAdd = () => {
     if (
       val.title &&
       val.image &&
-      val.image2 &&
+
       val.price &&
       val.rating &&
       val.reviews &&
@@ -114,20 +114,7 @@ const AdminAdd = () => {
             value={val.image}
             onChange={handleChange}
           />
-          <FormLabel
-            fontSize={{ base: "10px", sm: "14px", md: "16px", lg: "18px" }}
-            margin="-1px"
-          >
-            Image2
-          </FormLabel>
-          <Input
-            type="url"
-            marginBottom="10px"
-            placeholder="Product Image"
-            name="image2"
-            value={val.image2}
-            onChange={handleChange}
-          />
+         
           <FormLabel
             fontSize={{ base: "10px", sm: "14px", md: "16px", lg: "18px" }}
             margin="-1px"
@@ -187,7 +174,7 @@ const AdminAdd = () => {
           />
         </FormControl>
         <Center>
-          <Button color="blue" onClick={addProduct}>
+          <Button color="white" bg="pink.400" onClick={addProduct}>
             ADD PRODUCT
           </Button>
         </Center>

@@ -29,7 +29,7 @@ import { PRODUCTS_PAGE } from "../../Redux/Products/product.type";
 import Procard from "./Procard";
 
 const AdminDash = () => {
-  const [total, setTotal] = React.useState<number>(0);
+ 
   const Toast = useToast();
   const state = useAppSelector((store) => store.adminReducer);
   const val = state.data.data;
@@ -95,8 +95,8 @@ const AdminDash = () => {
         >
           <ButtonGroup>
             <Button
-              backgroundColor="rgb(244, 51, 151)"
-             
+              backgroundColor="pink.300"
+             color="white"
             >
               Total Products :
               {state.data.data && state.data.data.length
@@ -152,10 +152,7 @@ const AdminDash = () => {
       </Box>
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      
       <Box
         style={{
           display: "grid",
@@ -171,7 +168,7 @@ const AdminDash = () => {
           state.data.data.reverse().filter((_: any,index: number)=> {return (
             index >= 10* (activePage-1) && 
             index < 10 * activePage
-          )}).map((el:Product) => <Procard {...el}/>)}
+          )}).map((el:Product) => <Procard obj={el} hanDel={handleDelete}/>)}
       </Box>
       {!load? <Flex w="80px" m="auto"  mt="30px" gap="3px" mb="10px">
         <Button isDisabled={activePage===1} bgColor={"teal.500"} color="white" fontSize={"20px"} fontWeight={"bold"} onClick={()=> dispatch({type:PRODUCTS_PAGE,payload:activePage-1})}>
