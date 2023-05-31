@@ -70,13 +70,17 @@ export default function LoginAdmin() {
         <Heading
           color={"white"}
           lineHeight={1.1}
-          fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+          fontSize={{ base: "2xl", md: "3xl", lg: "6xl" }}
           fontFamily={" 'Lobster Two', cursive"}
         >
           Welcome Admin <br />
+         
+          <Text           
+          color={"white"}
+          lineHeight={1.1}
+          fontSize={{ base: "2xl", md: "2xl", lg: "4xl" }}
+          fontFamily={" 'Lobster Two', cursive"}>
           Sign in to your account
-          <Text as={"span"} bgClip="text">
-            !
           </Text>
         </Heading>
       </Box>

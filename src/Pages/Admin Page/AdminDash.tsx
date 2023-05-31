@@ -39,7 +39,7 @@ const AdminDash = () => {
   
   const dispatch = useDispatch();
   
-  // const handleUpdate = (_id, _price:number, _title:string) => {};
+
 
   const handleDelete = (e: number) => {
     dispatch(deleteData(e));
@@ -66,24 +66,12 @@ const AdminDash = () => {
     });
   };
 
-  const ToTalData = () => {
-    if (state.data.data) {
-      setTotal(val.reduce((acc: number, el: { price: any; }) => acc + Number(el.price), 0));
-    } else {
-      setTotal(0);
-    }
-  };
-
-  setTimeout(() => {
-    ToTalData();
-  }, 100);
+ 
 
   React.useEffect(() => {
     dispatch(getAdminData());
     dispatch({type:PRODUCTS_PAGE,payload:1})
-
-    ToTalData();
-  }, []);
+ }, []);
   
   return (
     <div>
@@ -158,12 +146,7 @@ const AdminDash = () => {
                 </MenuItem>
               </MenuList>
             </Menu>
-            <Button
-             
-              backgroundColor="rgb(244, 51, 151)"
-            >
-              Total Inventory : ₹{total}
-            </Button>
+
           </ButtonGroup>
         </Flex>
       </Box>
