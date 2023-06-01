@@ -76,6 +76,7 @@ export const FilterData = (load:string):any => async (dispatch:AppDispatch) => {
   try {
     let data = await categoryAdmin(load);
     dispatch({ type: FILTERING_ADMIN_DATA, payload: data });
+    console.log(data)
   } catch (err) {
     console.log(err);
   }

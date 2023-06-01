@@ -7,39 +7,30 @@ import {
   getAdminData,
 } from "../../Redux/Admin/admin.action";
 
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
- 
   Divider,
   Button,
   Flex,
   Box,
   ButtonGroup,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
+  Select,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-// import "../../CSS/AdminLoginPage.css";
+
 import { Product } from "../../utils/types";
 import { useAppSelector } from "../../Redux/store";
 import { PRODUCTS_PAGE } from "../../Redux/Products/product.type";
 import Procard from "./Procard";
 
 const AdminDash = () => {
- 
   const Toast = useToast();
   const state = useAppSelector((store) => store.adminReducer);
-  const val = state.data.data;
+  const val = state.data;
   const load = useAppSelector((state) => state.productReducer.isLoading);
   const activePage = useAppSelector((state) => state.productReducer.currPage);
-  const totalPages = Math.ceil(val?.length/10)
-  
-  const dispatch = useDispatch();
-  
+  const totalPages = Math.ceil(val?.length / 10);
 
+  const dispatch = useDispatch();
 
   const handleDelete = (e: number) => {
     dispatch(deleteData(e));
@@ -54,25 +45,23 @@ const AdminDash = () => {
     });
   };
 
-  const handleSelectData = async (par:string) => {
+  const handleSelectData = async (par: string) => {
     dispatch(FilterData(par));
-    Toast({
-      position: "top-right",
-      description: `${par} Data You Can See`,
-      title: `${par} Data `,
-      status: "success",
-      duration: 4000,
-      isClosable: true,
-    });
+    // Toast({
+    //   position: "top-right",
+    //   description: `${par} Data You Can See`,
+    //   title: `${par} Data `,
+    //   status: "success",
+    //   duration: 4000,
+    //   isClosable: true,
+    // });
   };
-
- 
 
   React.useEffect(() => {
     dispatch(getAdminData());
-    dispatch({type:PRODUCTS_PAGE,payload:1})
- }, []);
-  
+    dispatch({ type: PRODUCTS_PAGE, payload: 1 });
+  }, []);
+
   return (
     <div>
       <AdminNavbar />
@@ -94,89 +83,77 @@ const AdminDash = () => {
           }}
         >
           <ButtonGroup>
-            <Button
-              backgroundColor="pink.300"
-             color="white"
-            >
+            <Button backgroundColor="pink.300" color="white">
               Total Products :
-              {state.data.data && state.data.data.length
-                ? state.data.data.length
-                : 0}
+              {state.data && state.data.length ? state.data.length : 0}
             </Button>
-            <Menu>
-              <MenuButton
-                px={9}
-                py={2}
-                transition="all 0.2s"
-                borderRadius="md"
-                borderWidth="1px"
-                _hover={{ bg: "rgb(153, 153, 153).400" }}
-                _expanded={{ bg: "rgb(153, 153, 153).400" }}
-                _focus={{ boxShadow: "outline" }}
-               
-              >
-                Category <ChevronDownIcon />
-              </MenuButton>
-              <MenuList>
-                <MenuItem
-                 
-                  onClick={() => handleSelectData("men")}
-                >
-                  Men
-                </MenuItem>
-                <MenuItem
-                 
-                  onClick={() => handleSelectData("women")}
-                >
-                  Women
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem
-                 
-                  onClick={() => handleSelectData("Beauty & Health")}
-                >
-                  {" "}
-                  Cosmatics
-                </MenuItem>
-                <MenuItem>
-                  Jewellery and Accessories
-                </MenuItem>
-                <MenuItem>
-                  FootWear
-                </MenuItem>
-              </MenuList>
-            </Menu>
-
           </ButtonGroup>
+          <Select
+            onChange={(e) => handleSelectData(e.target.value)}
+            placeholder="category"
+          >
+            
+            <option value="men">Men</option>
+            <option value="women">Women</option>
+            <option value="Beauty & Health">Beauty & Health</option>
+          </Select>
         </Flex>
       </Box>
       <br />
       <br />
-      
+
       <Box
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(4,1fr)",
           width: "80%",
-          paddingBottom:"100px",
+          paddingBottom: "100px",
           margin: "auto",
           gap: "30px",
           border: "14px",
         }}
       >
-        {state.data.data &&
-          state.data.data.reverse().filter((_: any,index: number)=> {return (
-            index >= 10* (activePage-1) && 
-            index < 10 * activePage
-          )}).map((el:Product) => <Procard obj={el} hanDel={handleDelete}/>)}
+        {state.data &&
+          state.data
+            .reverse()
+            .filter((_: any, index: number) => {
+              return index >= 10 * (activePage - 1) && index < 10 * activePage;
+            })
+            .map((el: Product) => (
+              <Procard key={el.id} obj={el} hanDel={handleDelete} />
+            ))}
       </Box>
-      {!load? <Flex w="80px" m="auto"  mt="30px" gap="3px" mb="10px">
-        <Button isDisabled={activePage===1} bgColor={"teal.500"} color="white" fontSize={"20px"} fontWeight={"bold"} onClick={()=> dispatch({type:PRODUCTS_PAGE,payload:activePage-1})}>
-          {"<"}
-        </Button>
-        <Button color="teal.500">{activePage}</Button>
-        <Button isDisabled={activePage===totalPages} bgColor={"teal.500"} color="white" fontSize={"20px"} fontWeight={"bold"} onClick={()=> dispatch({type:PRODUCTS_PAGE,payload:activePage+1})}>{">"}</Button>
-      </Flex> :""}
+      {!load ? (
+        <Flex w="80px" m="auto" mt="30px" gap="3px" mb="10px">
+          <Button
+            isDisabled={activePage === 1}
+            bgColor={"teal.500"}
+            color="white"
+            fontSize={"20px"}
+            fontWeight={"bold"}
+            onClick={() =>
+              dispatch({ type: PRODUCTS_PAGE, payload: activePage - 1 })
+            }
+          >
+            {"<"}
+          </Button>
+          <Button color="teal.500">{activePage}</Button>
+          <Button
+            isDisabled={activePage === totalPages}
+            bgColor={"teal.500"}
+            color="white"
+            fontSize={"20px"}
+            fontWeight={"bold"}
+            onClick={() =>
+              dispatch({ type: PRODUCTS_PAGE, payload: activePage + 1 })
+            }
+          >
+            {">"}
+          </Button>
+        </Flex>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

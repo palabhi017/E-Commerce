@@ -7,7 +7,7 @@ export const adminDataAPI = async () => {
   try {
     let res: AxiosResponse<Product[]> = await axios("https://onestoredata.onrender.com/products");
 
-    return res;
+    return res.data;
   } catch (err) {
     console.log(err);
   }
@@ -33,7 +33,7 @@ export const deleteAdminAPi = async (id:number) => {
 
 export const categoryAdmin = async (par:String) => {
   try {
-    let res: AxiosResponse<Product[]> = await axios(`https://onestoredata.onrender.com//products?category=${par}`);
+    let res: AxiosResponse<Product[]> = await axios(`https://onestoredata.onrender.com/products?category=${par}`);
     return res.data;
   } catch (err) {
     console.log(err);
