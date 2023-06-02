@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import AdminNavbar from "./AdminNavbar";
 import { useDispatch } from "react-redux";
 import {
   deleteData,
   FilterData,
   getAdminData,
+  updateData,
 } from "../../Redux/Admin/admin.action";
 
 import {
@@ -21,15 +22,18 @@ import { Product } from "../../utils/types";
 import { useAppSelector } from "../../Redux/store";
 import { PRODUCTS_PAGE } from "../../Redux/Products/product.type";
 import Procard from "./Procard";
+import AdminUpdate from "./AdminUpdate";
 
 const AdminDash = () => {
   const Toast = useToast();
-  const state = useAppSelector((store) => store.adminReducer);
+  const state:any = useAppSelector((store) => store.adminReducer);
   const val = state.data;
   const load = useAppSelector((state) => state.productReducer.isLoading);
   const activePage = useAppSelector((state) => state.productReducer.currPage);
   const totalPages = Math.ceil(val?.length / 10);
-
+  const [updateMo,setUpdateMo]=useState<boolean>(false)
+  const [proD,setProD]=useState({})
+  const [temp,setTemp]=useState({})
   const dispatch = useDispatch();
 
   const handleDelete = (e: number) => {
@@ -47,17 +51,15 @@ const AdminDash = () => {
 
   const handleSelectData = async (par: string) => {
     dispatch(FilterData(par));
-    // Toast({
-    //   position: "top-right",
-    //   description: `${par} Data You Can See`,
-    //   title: `${par} Data `,
-    //   status: "success",
-    //   duration: 4000,
-    //   isClosable: true,
-    // });
+  
+  };
+  const handleUpdate = async (id:number,obj: string) => {
+    
+  // setTemp(obj)
+  setUpdateMo(true)
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getAdminData());
     dispatch({ type: PRODUCTS_PAGE, payload: 1 });
   }, []);
@@ -68,6 +70,11 @@ const AdminDash = () => {
       <Divider />
       <Divider />
       <Divider />
+      {updateMo? <Box w="40vw" h="80vh" left="30vw" top="30px" pos="fixed" zIndex={1} background={"white"} border="1px solid pink">
+
+<AdminUpdate temp={setUpdateMo} />
+</Box>:""}
+      
       <Box
         style={{
           height: "20px",
@@ -120,7 +127,7 @@ const AdminDash = () => {
               return index >= 10 * (activePage - 1) && index < 10 * activePage;
             })
             .map((el: Product) => (
-              <Procard key={el.id} obj={el} hanDel={handleDelete} />
+              <Procard key={el.id} obj={el} hanDel={handleDelete} hanUp={handleUpdate} />
             ))}
       </Box>
       {!load ? (

@@ -1,5 +1,5 @@
 
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { IAdmin } from "./admin.action";
 import { Product } from "../../utils/types";
 
@@ -40,10 +40,11 @@ export const categoryAdmin = async (par:String) => {
   }
 };
 
-// export const updateAdminData = async (id:number, title:string, price:number) => {
-//   try {
-//     let res = await axios(`https://onestoredata.onrender.com//${id}`, { title, price });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+export const updateAdminData = async (id:number, obj: any) => {
+  try {
+    let res: AxiosResponse<Product[]> = await axios(`https://onestoredata.onrender.com/products/${id}`, obj);
+    return res.data
+  } catch (err) {
+    console.log(err);
+  }
+};

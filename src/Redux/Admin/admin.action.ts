@@ -71,6 +71,17 @@ export const deleteData = (id:number):any => async (dispatch:AppDispatch) => {
     console.log(err);
   }
 };
+export const updateData = (id:number,obj:any):any => async (dispatch:AppDispatch) => {
+  try {
+    let data = await deleteAdminAPi(id);
+    dispatch({
+      type: ADMIN_DATA_LOADING,
+      payload: ""
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const FilterData = (load:string):any => async (dispatch:AppDispatch) => {
   try {
