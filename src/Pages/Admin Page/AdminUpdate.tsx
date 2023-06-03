@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Center, Heading, Input } from "@chakra-ui/react";
 import {
   FormControl,
@@ -6,20 +6,33 @@ import {
   
   Button,
 } from "@chakra-ui/react";
+import { useAppDispatch } from "../../Redux/store";
+import { getAdminData, updateData } from "../../Redux/Admin/admin.action";
 
 
-interface Texts{
-  title?:string,
-  price?:number
-}
-const AdminUpdate = ({temp}:any) => {
-  const [text, textVal] = React.useState<Texts>({});
 
-  // const handleUpdateChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-  //   const { name, value } = e.target;
+const AdminUpdate = ({temp1,obj}:any) => {
+  const [title, setTitle] = useState<string>(obj.title);
+  const [price, setPrice] = useState<string>(obj.price);
+  const [image, setImage] = useState<string>(obj.image);
+  const [category, setCategory] = useState<string>(obj.category);
+  const [tag, setTag] = useState<string>(obj.tag);
+  const dispatch = useAppDispatch();
 
-  //   textVal({ ...text, [name]: value });
-  // };
+ const handleupdate= async()=>{
+  let newData={
+    title,
+    price,
+    image,
+    category,
+    tag,
+    reviews:obj.reviews
+  }
+ await dispatch(updateData(obj.id,newData))
+ await dispatch(getAdminData());
+ temp1(false)
+
+ }
 
   return (
     <Box width="100%" h="100%">
@@ -48,8 +61,9 @@ const AdminUpdate = ({temp}:any) => {
         marginBottom="10px"
         placeholder="Product title"
         name="title"
-        // value={}
-        // onChange={handleChange}
+        value={title}
+        onChange={(e)=> setTitle(e.target.value)}
+
       />
       <FormLabel
         fontSize={{ base: "10px", sm: "14px", md: "16px", lg: "18px" }}
@@ -77,8 +91,9 @@ const AdminUpdate = ({temp}:any) => {
         marginBottom="10px"
         placeholder="Product Price"
         name="price"
-        // value={val.price}
-        // onChange={handleChange}
+        value={price}
+        onChange={(e)=> setPrice(e.target.value)}
+
       />
 
       
@@ -93,8 +108,9 @@ const AdminUpdate = ({temp}:any) => {
         marginBottom="10px"
         placeholder="Product Category"
         name="category"
-        // value={val.category}
-        // onChange={handleChange}
+        value={category}
+        onChange={(e)=> setCategory(e.target.value)}
+
       />
       <FormLabel
         fontSize={{ base: "10px", sm: "14px", md: "16px", lg: "18px" }}
@@ -107,14 +123,14 @@ const AdminUpdate = ({temp}:any) => {
         marginBottom="10px"
         placeholder="tag"
         name="tag"
-        // value={val.tag}
-        // onChange={handleChange}
+        value={tag}
+        onChange={(e)=> setTag(e.target.value)}
       />
        <Center>
-      <Button color="white" bg="blue.400">
+      <Button color="white" bg="blue.400" onClick={()=> handleupdate()}>
         EDIT PRODUCT
       </Button>
-      <Button color="white" bg="tomato" ml="10px" onClick={()=> temp(false)}>
+      <Button color="white" bg="tomato" ml="10px" onClick={()=> temp1(false)}>
         CANCEL
       </Button>
     </Center>

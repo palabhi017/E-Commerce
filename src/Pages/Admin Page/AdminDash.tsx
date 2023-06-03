@@ -19,7 +19,7 @@ import {
 import { useToast } from "@chakra-ui/react";
 
 import { Product } from "../../utils/types";
-import { useAppSelector } from "../../Redux/store";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { PRODUCTS_PAGE } from "../../Redux/Products/product.type";
 import Procard from "./Procard";
 import AdminUpdate from "./AdminUpdate";
@@ -32,9 +32,9 @@ const AdminDash = () => {
   const activePage = useAppSelector((state) => state.productReducer.currPage);
   const totalPages = Math.ceil(val?.length / 10);
   const [updateMo,setUpdateMo]=useState<boolean>(false)
-  const [proD,setProD]=useState({})
+  // const [proD,setProD]=useState({})
   const [temp,setTemp]=useState({})
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleDelete = (e: number) => {
     dispatch(deleteData(e));
@@ -53,9 +53,9 @@ const AdminDash = () => {
     dispatch(FilterData(par));
   
   };
-  const handleUpdate = async (id:number,obj: string) => {
+  const handleUpdate =(id:number,obj: Product) => {
     
-  // setTemp(obj)
+  setTemp(obj)
   setUpdateMo(true)
   };
 
@@ -72,7 +72,7 @@ const AdminDash = () => {
       <Divider />
       {updateMo? <Box w="40vw" h="80vh" left="30vw" top="30px" pos="fixed" zIndex={1} background={"white"} border="1px solid pink">
 
-<AdminUpdate temp={setUpdateMo} />
+<AdminUpdate temp1={setUpdateMo} obj={temp} />
 </Box>:""}
       
       <Box
@@ -121,9 +121,7 @@ const AdminDash = () => {
         }}
       >
         {state.data &&
-          state.data
-            .reverse()
-            .filter((_: any, index: number) => {
+          state.data.filter((_: any, index: number) => {
               return index >= 10 * (activePage - 1) && index < 10 * activePage;
             })
             .map((el: Product) => (

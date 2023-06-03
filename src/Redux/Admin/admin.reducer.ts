@@ -8,6 +8,7 @@ import {
   // POST_ADMIN_DATA_LOADING,
   DELETE_ADMIN_DATA,
   FILTERING_ADMIN_DATA,
+  UPDATE_ADMIN_DATA,
 } from "./admin.type";
 
 let initialState = {
@@ -54,6 +55,12 @@ export const reducer = (state = initialState, { type, payload }:Temp) => {
       };
     }
     case FILTERING_ADMIN_DATA: {
+      return {
+        ...state,
+        data: payload,
+      };
+    }
+    case UPDATE_ADMIN_DATA: {
       return {
         ...state,
         data: payload,

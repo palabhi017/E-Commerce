@@ -7,6 +7,7 @@ import {
   categoryAdmin,
   deleteAdminAPi,
   postAdminDataAPi,
+  updateAdminData,
 } from "./admin.api";
 import {
   ADMIN_DATA_ERROR,
@@ -16,6 +17,7 @@ import {
   POST_ADMIN_DATA_SUCCESS,
   POST_ADMIN_DATA_LOADING,
   FILTERING_ADMIN_DATA,
+  UPDATE_ADMIN_DATA,
 } from "./admin.type";
 
 export interface IAdmin{
@@ -32,6 +34,7 @@ export const getAdminData = ():any => async (dispatch:AppDispatch) => {
   try {
     let data = await adminDataAPI();
     if (data) {
+    
       dispatch({ type: ADMIN_DATA_SUCCESS, payload: data });
     }
   } catch (err) {
@@ -73,11 +76,8 @@ export const deleteData = (id:number):any => async (dispatch:AppDispatch) => {
 };
 export const updateData = (id:number,obj:any):any => async (dispatch:AppDispatch) => {
   try {
-    let data = await deleteAdminAPi(id);
-    dispatch({
-      type: ADMIN_DATA_LOADING,
-      payload: ""
-    });
+    let data = await updateAdminData(id,obj);
+  
   } catch (err) {
     console.log(err);
   }
