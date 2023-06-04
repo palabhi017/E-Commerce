@@ -35,7 +35,7 @@ const AdminUpdate = ({temp1,obj}:any) => {
  }
 
   return (
-    <Box width="100%" h="100%">
+    <Box width="100%" h="100%" >
     <Heading margin="10px">
       <Center
         fontSize={{ base: "10px", sm: "18px", md: "20px", lg: "25px" }}
@@ -72,7 +72,7 @@ const AdminUpdate = ({temp1,obj}:any) => {
         Image
       </FormLabel>
       <Input
-        type="url"
+        type="file"
         marginBottom="10px"
         placeholder="Product Image"
         name="image"
