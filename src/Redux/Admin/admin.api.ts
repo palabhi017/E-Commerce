@@ -24,7 +24,7 @@ export const postAdminDataAPi = async (payload:Product) => {
 
 export const deleteAdminAPi = async (id:number) => {
   try {
-    let res: AxiosResponse<Product[]> = await axios.delete(`https://onestoredata.onrender.com//products/${id}`);
+    let res: AxiosResponse<Product[]> = await axios.delete(`https://onestoredata.onrender.com/products/${id}`);
     return res.data;
   } catch (err) {
     console.log(err);

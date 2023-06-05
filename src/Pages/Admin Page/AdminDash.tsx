@@ -1,11 +1,9 @@
-import React,{useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import AdminNavbar from "./AdminNavbar";
-import { useDispatch } from "react-redux";
 import {
   deleteData,
   FilterData,
   getAdminData,
-  updateData,
 } from "../../Redux/Admin/admin.action";
 
 import {
@@ -23,7 +21,6 @@ import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { PRODUCTS_PAGE } from "../../Redux/Products/product.type";
 import Procard from "./Procard";
 import AdminUpdate from "./AdminUpdate";
-import base from "@emotion/styled/types/base";
 
 const AdminDash = () => {
   const Toast = useToast();
@@ -39,7 +36,6 @@ const AdminDash = () => {
 
   const handleDelete = (e: number) => {
     dispatch(deleteData(e));
-
     Toast({
       position: "top",
       description: "Data Successfully Deleted",
@@ -48,6 +44,7 @@ const AdminDash = () => {
       duration: 9000,
       isClosable: true,
     });
+    dispatch(getAdminData());
   };
 
   const handleSelectData = async (par: string) => {

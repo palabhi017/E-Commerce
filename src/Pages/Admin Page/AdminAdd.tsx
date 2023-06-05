@@ -18,7 +18,7 @@ import { Product } from "../../utils/types";
 const initialState = {
   title: "",
   image: "",
-  image2: "",
+  
   price: 0,
   rating: "3.5",
   reviews: "",
@@ -31,9 +31,25 @@ const AdminAdd = () => {
   const dispatch = useDispatch();
   const handleToast = useToast();
   const navigate = useNavigate();
-  const handleChange:React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { name, value } = e.target;
-    setVal({ ...val, [name]: value });
+  const handleChange = (e:any) => {
+    const { name, value} = e.target;
+    if(e.target.name==="image"){
+     if(e.target.files){
+      const file = e.target.files[0]
+      const reader= new FileReader() 
+
+      reader.onload=()=>{
+           setVal({ ...val, [name]: reader.result });
+          
+      }
+      reader.readAsDataURL(file)
+     }
+     
+    }else{
+      
+      setVal({ ...val, [name]: value });
+    }
+   
   };
 
   const addProduct = () => {
@@ -107,11 +123,11 @@ const AdminAdd = () => {
             Image
           </FormLabel>
           <Input
-            type="url"
+            type="file"
             marginBottom="10px"
             placeholder="Product Image"
             name="image"
-            value={val.image}
+            
             onChange={handleChange}
           />
          
